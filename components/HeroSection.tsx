@@ -47,19 +47,15 @@ export default function HeroSection({ categories }: { categories: Category[] }) 
           </div>
 
           {/* Quick Links from DB categories */}
-          {categories.length > 0 && (
-            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((category) => (
-                <Link
-                  key={category.id}
-                  href={`/categories/${category.slug}`}
-                  className="px-4 py-2 bg-white/15 hover:bg-white/25 rounded-full text-sm font-medium transition-colors backdrop-blur-sm"
-                >
-                  {category.name}
-                </Link>
-              ))}
-            </div>
-          )}
+          {categories?.length > 0 && (
+  <div className="flex flex-wrap justify-center gap-3">
+    {categories.map((category) => (
+      <Link key={category.id} href={`/categories/${category.slug}`}>
+        {category.name}
+      </Link>
+    ))}
+  </div>
+)}
         </div>
       </div>
     </section>
