@@ -1,9 +1,8 @@
-import Link from 'next/link';
-import { Category } from '@/lib/supabase';
+import SearchBar from './SearchBar';
 
-export default function HeroSection({ categories }: { categories: Category[] }) {
+export default function HeroSection() {
   return (
-    <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-teal-600 text-white overflow-hidden">
+    <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-teal-600 text-white">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-white" />
@@ -23,39 +22,7 @@ export default function HeroSection({ categories }: { categories: Category[] }) 
           </p>
 
           {/* Search Bar */}
-          <div className="max-w-xl mx-auto mb-8">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search for a product..."
-                className="w-full px-5 py-3.5 pl-12 rounded-xl text-gray-900 bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400 text-sm md:text-base"
-              />
-              <svg
-                className="absolute left-4 top-3.5 md:top-4 h-5 w-5 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </div>
-          </div>
-
-          {/* Quick Links from DB categories */}
-          {categories?.length > 0 && (
-  <div className="flex flex-wrap justify-center gap-3">
-    {categories.map((category) => (
-      <Link key={category.id} href={`/categories/${category.slug}`}>
-        {category.name}
-      </Link>
-    ))}
-  </div>
-)}
+          <SearchBar variant="hero" />
         </div>
       </div>
     </section>

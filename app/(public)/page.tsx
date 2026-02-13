@@ -44,7 +44,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <HeroSection categories={categories} />
+      <HeroSection />
 
       {/* Featured Products */}
       <FeaturedProducts products={featuredProducts} />

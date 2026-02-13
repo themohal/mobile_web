@@ -7,8 +7,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { use } from 'react';
 
-export default function ProductDetailPage({ params }: { params: { slug: string } }) {
-  const { slug } = params; // Directly use params, remove 'use' hook
+export default function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
