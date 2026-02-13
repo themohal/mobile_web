@@ -3,12 +3,20 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { supabase, Product } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 import { formatPrice } from '@/lib/utils';
+
+type Suggestion = {
+  id: string;
+  title: string;
+  slug: string;
+  price: number;
+  image_url: string | null;
+};
 
 export default function SearchBar({ variant = 'hero' }: { variant?: 'hero' | 'navbar' }) {
   const [query, setQuery] = useState('');
-  const [suggestions, setSuggestions] = useState<Product[]>([]);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const router = useRouter();
   const wrapperRef = useRef<HTMLDivElement>(null);
