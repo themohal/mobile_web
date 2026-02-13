@@ -45,7 +45,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <HeroSection categories={categories} />
+      <HeroSection />
 
       {/* Categories */}
       <section className="py-12 bg-white">
