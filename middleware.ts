@@ -32,21 +32,21 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { user } } = await supabase.auth.getUser();
 
   // Protect admin routes (except login page)
   if (
     request.nextUrl.pathname.startsWith('/admin') &&
     !request.nextUrl.pathname.startsWith('/admin/login')
   ) {
-    if (!session) {
+    if (!user) {
       const loginUrl = new URL('/admin/login', request.url);
       return NextResponse.redirect(loginUrl);
     }
   }
 
   // Redirect logged-in users away from login page
-  if (request.nextUrl.pathname === '/admin/login' && session) {
+  if (request.nextUrl.pathname === '/admin/login' && user) {
     const adminUrl = new URL('/admin', request.url);
     return NextResponse.redirect(adminUrl);
   }
