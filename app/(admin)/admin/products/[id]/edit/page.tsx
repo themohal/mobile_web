@@ -5,7 +5,7 @@ import ProductForm from '../../../_components/ProductForm';
 import { updateProduct } from '../../../_actions/products';
 
 export default async function EditProductPage({ params }: { params: { id: string } }) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const [{ data: product }, { data: brands }, { data: categories }] = await Promise.all([
     supabase.from('products').select('*').eq('id', params.id).single(),

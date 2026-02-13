@@ -5,7 +5,7 @@ import BrandForm from '../../../_components/BrandForm';
 import { updateBrand } from '../../../_actions/brands';
 
 export default async function EditBrandPage({ params }: { params: { id: string } }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: brand } = await supabase
     .from('brands')
     .select('*')

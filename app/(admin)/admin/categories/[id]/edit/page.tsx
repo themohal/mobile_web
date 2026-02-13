@@ -5,7 +5,7 @@ import CategoryForm from '../../../_components/CategoryForm';
 import { updateCategory } from '../../../_actions/categories';
 
 export default async function EditCategoryPage({ params }: { params: { id: string } }) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const [{ data: category }, { data: categories }] = await Promise.all([
     supabase.from('categories').select('*').eq('id', params.id).single(),
