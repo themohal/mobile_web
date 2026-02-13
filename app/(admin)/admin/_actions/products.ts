@@ -6,7 +6,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 export async function createProduct(formData: FormData) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const title = formData.get('title') as string;
   const brand_id = formData.get('brand_id') as string;
@@ -40,7 +40,7 @@ export async function createProduct(formData: FormData) {
 }
 
 export async function updateProduct(id: string, formData: FormData) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const title = formData.get('title') as string;
   const brand_id = formData.get('brand_id') as string;
@@ -78,7 +78,7 @@ export async function updateProduct(id: string, formData: FormData) {
 }
 
 export async function deleteProduct(id: string) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { error } = await supabase.from('products').delete().eq('id', id);
 
   if (error) return { error: error.message };

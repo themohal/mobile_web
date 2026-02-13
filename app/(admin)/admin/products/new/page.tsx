@@ -4,7 +4,7 @@ import ProductForm from '../../_components/ProductForm';
 import { createProduct } from '../../_actions/products';
 
 export default async function NewProductPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const [{ data: brands }, { data: categories }] = await Promise.all([
     supabase.from('brands').select('*').order('name'),

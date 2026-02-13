@@ -4,7 +4,7 @@ import DeleteButton from '../_components/DeleteButton';
 import { deleteCategory } from '../_actions/categories';
 
 export default async function CategoriesListPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: categories } = await supabase
     .from('categories')
     .select('*')

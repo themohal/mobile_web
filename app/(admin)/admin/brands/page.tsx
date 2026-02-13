@@ -4,7 +4,7 @@ import DeleteButton from '../_components/DeleteButton';
 import { deleteBrand } from '../_actions/brands';
 
 export default async function BrandsListPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: brands } = await supabase
     .from('brands')
     .select('*')

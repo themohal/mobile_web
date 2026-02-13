@@ -4,7 +4,7 @@ import CategoryForm from '../../_components/CategoryForm';
 import { createCategory } from '../../_actions/categories';
 
 export default async function NewCategoryPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: categories } = await supabase
     .from('categories')
     .select('*')
